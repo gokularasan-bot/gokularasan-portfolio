@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gokularasan — Professional Engineering Field Handbook</title>
+  <meta name="description" content="Personal Engineering Handbook & Research Log of Gokularasan, Electrical and Electronics Engineering student at Kumaraguru College of Technology.">
+  <meta name="keywords" content="Gokularasan, Electrical Engineering, Kumaraguru College of Technology, Embedded Systems, Solar EPC, IoT, Energy Monitoring, Portfolio">
+  <meta name="author" content="Gokularasan">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/book.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- StPageFlip Realistic 3D Page Turning Engine (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+</head>
+<body>
+
+  <div class="viewport-stage">
+
+    <!-- ==========================================================================
+         1. LIVING DESK ENVIRONMENT (Photo Scene with Ambient Micro-Animations)
+         ========================================================================== -->
+    <section id="desk-cover-scene" class="desk-cover-scene" aria-label="Field Notes Desk Preview">
+      
+      <!-- Responsive Aspect-Ratio Scene Container for Pixel-Perfect Overlay Alignment -->
+      <div class="desk-scene-layer">
+
+        <!-- A. Living Plant Branches (Top Center - Hanging Creeping Foliage) -->
+        <div class="desk-plant-top" aria-hidden="true">
+          <img src="assets/images/plant-top-branch.png" class="plant-branch-img" alt="" draggable="false">
+          <div class="plant-breeze-shimmer top-shimmer"></div>
+        </div>
+
+        <!-- B. Living Plant Foliage (Bottom Left - Lush Potted Leaves) -->
+        <div class="desk-plant-bottom" aria-hidden="true">
+          <img src="assets/images/plant-bottom-foliage.png" class="plant-foliage-img" alt="" draggable="false">
+          <div class="plant-breeze-shimmer bottom-shimmer"></div>
+        </div>
+
+        <!-- C. Hot Coffee Cup — Multi-Strand Thermal Steam & Heat Shimmer -->
+        <div class="coffee-cup-hotspot" aria-hidden="true">
+          <div class="coffee-heat-shimmer"></div>
+          <div class="coffee-vapor-plume">
+            <div class="vapor-wisp wisp-1"></div>
+            <div class="vapor-wisp wisp-2"></div>
+            <div class="vapor-wisp wisp-3"></div>
+            <div class="vapor-wisp wisp-4"></div>
+            <div class="vapor-wisp wisp-5"></div>
+            <div class="vapor-wisp wisp-6"></div>
+          </div>
+        </div>
+
+        <!-- D. Real-Time Moving Hands directly on the Actual Clock in the Photograph -->
+        <div class="desk-clock-hands-overlay" id="desk-realtime-clock" aria-label="Real-time Moving Hands over Photo Clock" title="Live Local System Time">
+          <div class="clock-hand hand-hour" id="clock-hand-hour"></div>
+          <div class="clock-hand hand-minute" id="clock-hand-minute"></div>
+          <div class="clock-hand hand-second" id="clock-hand-second"></div>
+          <div class="clock-center-pin"></div>
+        </div>
+
+        <!-- E. Interactive Hotspot over the Real Leather 'Field Notes - Author Gokularasan' Book -->
+        <div class="desk-book-hotspot" id="desk-book-hotspot" role="button" tabindex="0" aria-label="Open Gokularasan's Field Book" title="Touch / Click to Open Gokularasan's Field Book"></div>
+
+      </div> <!-- End desk-scene-layer -->
+
+    </section>
+
+    <!-- ==========================================================================
+         2. OPEN 3D PRINTED BOOK STAGE (Active Fullscreen Reading Spread)
+         ========================================================================== -->
+    <main id="open-book-stage" class="open-book-stage" aria-label="Gokularasan Engineering Handbook">
+      <div class="book-wrapper-3d">
+        <!-- Stitched Center Spine Crease & Shading -->
+        <div class="book-spine-crease"></div>
+
+        <!-- 3D StPageFlip Spreads Container (Dynamically rendered via app.js) -->
+        <div id="book-flip-container"></div>
+      </div>
+
+      <!-- Literally Transparent Bottom Scrubber Bar (Seamless Spread Scrubbing) -->
+      <nav id="book-bottom-scrubber" class="book-bottom-scrubber" aria-label="Book Page Navigation Scrubber">
+        <button class="scrubber-nav-btn btn-prev-spread" id="scrubber-btn-prev" aria-label="Previous Page Spread" title="Previous Page Spread">‹</button>
+        <div class="scrubber-track" id="scrubber-track" title="Click or Drag to Scrub Pages">
+          <div class="scrubber-fill" id="scrubber-fill"></div>
+          <div class="scrubber-thumb" id="scrubber-thumb"></div>
+        </div>
+        <button class="scrubber-nav-btn btn-next-spread" id="scrubber-btn-next" aria-label="Next Page Spread" title="Next Page Spread">›</button>
+        <span class="scrubber-label" id="scrubber-label">SPREAD 01 / 20</span>
+      </nav>
+    </main>
+
+  </div> <!-- End viewport-stage -->
+
+
+  <!-- ==========================================================================
+       CASE STUDY LAB MODAL SHEETS (Fold-out test reports)
+       ========================================================================== -->
+
+  <!-- Modal 01: Real-Time Classroom Energy Monitoring System -->
+  <div class="case-study-modal-backdrop" id="modal-proj-01" role="dialog" aria-modal="true" aria-labelledby="modal-01-title">
+    <div class="case-study-modal-card">
+      <button class="btn-close-modal" aria-label="Close Case Study">&times;</button>
+      
+      <div class="page-category-tag">FIELD LAB REPORT // PROJECT 01</div>
+      <h2 id="modal-01-title" class="page-main-title" style="margin: 6px 0 10px 0;">
+        Real-Time Classroom Energy Monitoring System
+      </h2>
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-accent); font-weight:700; margin-bottom: 14px;">
+        STATUS: IN ACTIVE PROTOTYPE DEVELOPMENT
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0;">
+        <div>
+          <div class="book-photo-frame">
+            <img src="assets/images/project-energy-monitor.jpg" alt="Arduino and Sensor Rig Plate">
+          </div>
+          <div class="book-photo-caption">
+            PLATE 5.1 — Laboratory breadboard & sensor rig showing Arduino UNO, ZMPT101B voltage sensor, ACS712 current sensor, terminal block, and electrical load bulb test fixture.
+          </div>
+        </div>
+
+        <div>
+          <h3 class="page-secondary-title" style="margin-top:0;">Problem Statement</h3>
+          <p class="page-body-paragraph">
+            Classroom energy consumption is traditionally recorded only on monthly bulk utility meters, making it difficult to continuously monitor discrete loads, pinpoint peak demand periods, eliminate idle off-hour waste, and detect abnormal electrical draw.
+          </p>
+
+          <h3 class="page-secondary-title">Engineered Solution</h3>
+          <p class="page-body-paragraph">
+            The system aims to capture electrical load information and transform it into understandable real-time and historical energy data via microcontroller telemetry and a digital monitoring interface.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="page-secondary-title">Key Technical Features</h3>
+      <ul class="book-bullet-list">
+        <li>Real-time classroom current (<strong>A</strong>) and voltage (<strong>V</strong>) monitoring</li>
+        <li>Continuous active power (<strong>W</strong>) and cumulative energy consumption tracking (<strong>kWh</strong>)</li>
+        <li>Estimated electricity cost calculation based on tariff algorithms</li>
+        <li>Live IoT digital telemetry dashboard and historical load curve profiling</li>
+        <li>Peak-load identification and threshold over-current/abnormal consumption alerts</li>
+        <li>Modular instrumentation scalable across multi-classroom campus networks</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 02: Smart Cooking Oil Impurity Detection System -->
+  <div class="case-study-modal-backdrop" id="modal-proj-02" role="dialog" aria-modal="true" aria-labelledby="modal-02-title">
+    <div class="case-study-modal-card">
+      <button class="btn-close-modal" aria-label="Close Case Study">&times;</button>
+      
+      <div class="page-category-tag">FIELD LAB REPORT // PROJECT 02</div>
+      <h2 id="modal-02-title" class="page-main-title" style="margin: 6px 0 10px 0;">
+        Smart Cooking Oil Impurity Detection System
+      </h2>
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-accent); font-weight:700; margin-bottom: 14px;">
+        STATUS: PRELIMINARY BENCH STUDY & RESEARCH
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0;">
+        <div>
+          <div class="book-photo-frame">
+            <img src="assets/images/project-oil-detector.jpg" alt="HIOKI Impedance Analyzer and Multi-Well Oil Sensor Fixture">
+          </div>
+          <div class="book-photo-caption">
+            PLATE 6.1 — Experimental measurement bench featuring the HIOKI Impedance Analyzer, dedicated PC interface software, multi-well test fixture with sensor array, and oil sample container.
+          </div>
+        </div>
+
+        <div>
+          <h3 class="page-secondary-title" style="margin-top:0;">System Concept</h3>
+          <p class="page-body-paragraph">
+            A low-cost sensor-based concept for preliminary screening of changes in cooking-oil condition by analysing measurable physical and electrochemical parameters.
+          </p>
+
+          <h3 class="page-secondary-title">Measurement Parameters</h3>
+          <p class="page-body-paragraph">
+            Water/moisture contamination, pH variation, temperature characteristics, and impedance properties.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="page-secondary-title">Key Capabilities & Advanced Exploration</h3>
+      <ul class="book-bullet-list">
+        <li>Sensor-based comparative quality analysis between fresh and repeated-use oil</li>
+        <li>Real-time IoT dashboard data logging and threshold-based abnormal warnings</li>
+        <li>Potential parameters: Turbidity/optical sensing, color analysis, and electrical conductivity comparison</li>
+        <li>Exploration of Total Polar Compounds (TPC) and ML-based classification models</li>
+      </ul>
+
+      <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-accent); border-left:3px solid var(--ink-accent); padding-left:10px; margin-top:14px;">
+        <strong>RESEARCH DISCLAIMER:</strong> This system is intended strictly as a preliminary research and screening concept. Sensor readings require calibration and validation against established laboratory methods before being used for actual food-safety decisions.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JavaScript Application Bundle -->
+  <script src="js/data.js"></script>
+  <script src="js/book-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

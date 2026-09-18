@@ -1,0 +1,938 @@
+/* ==========================================================================
+   GOKULARASAN — AUTHENTIC PRINTED BOOK TYPOGRAPHY & 3D PHYSICAL CURVATURE
+   Mild Shaded White Paper, Strong 3D Spine Inward Curvature on Letters, Boxes & Buttons,
+   Clean Edge-to-Edge Spread, Zero Crease Overlap & Beautiful Running Footers
+   ========================================================================== */
+
+/* ==========================================================================
+   1. INDIVIDUAL BOOK PAGES (Edge-to-Edge Spread & Natural Bottom Fill)
+   ========================================================================== */
+.book-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--book-paper);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.75) 0%, transparent 85%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 0%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.02) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden !important; /* Strict Zero Internal Page Scrolling */
+  box-sizing: border-box;
+  perspective: 1200px;
+}
+
+/* Left Page: Center crease is on the RIGHT. Enforce right safety margin so nothing exceeds center */
+.book-page.page-left {
+  padding: 20px 38px 46px 24px;
+  box-shadow: var(--shadow-page-left);
+  border-right: 1px solid rgba(40, 25, 12, 0.1);
+}
+
+/* Right Page: Center crease is on the LEFT. Enforce left safety margin so nothing exceeds center */
+.book-page.page-right {
+  padding: 20px 24px 46px 38px;
+  box-shadow: var(--shadow-page-right);
+  border-left: 1px solid rgba(40, 25, 12, 0.1);
+}
+
+/* Physical 3D Center Inward Curvature Spine Gutter Shadows */
+.book-page.page-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(30, 20, 10, 0.01) 40%,
+    rgba(30, 20, 10, 0.06) 70%,
+    rgba(30, 20, 10, 0.18) 90%,
+    rgba(30, 20, 10, 0.42) 100%
+  );
+  pointer-events: none;
+  z-index: 35;
+}
+
+.book-page.page-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(30, 20, 10, 0.01) 40%,
+    rgba(30, 20, 10, 0.06) 70%,
+    rgba(30, 20, 10, 0.18) 90%,
+    rgba(30, 20, 10, 0.42) 100%
+  );
+  pointer-events: none;
+  z-index: 35;
+}
+
+/* ==========================================================================
+   2. SPINE TEXT & CONTENT CURVATURE (Natural Vertical Flow)
+   ========================================================================== */
+.page-content-wrapper {
+  flex: 1 1 auto;
+  min-height: 0; /* Ensures content wrapper shrinks so footer is ALWAYS pinned at bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
+
+.book-page.page-left .page-content-wrapper {
+  transform-origin: right center;
+}
+
+.book-page.page-right .page-content-wrapper {
+  transform-origin: left center;
+}
+
+/* ==========================================================================
+   3. UNIFIED PRINTED TYPOGRAPHY (3D Letter Shadows & Inward Curves)
+   ========================================================================== */
+.page-chapter-header {
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--book-border);
+  padding-bottom: 4px;
+}
+
+.page-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--ink-blueprint);
+  text-transform: uppercase;
+}
+
+.page-main-title {
+  font-family: var(--font-heading);
+  font-size: 2.45rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: 1.12;
+  margin-top: 2px;
+  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+.page-main-subtitle {
+  font-family: var(--font-technical);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink-accent);
+  margin-top: 2px;
+  line-height: 1.32;
+  text-align: left;
+}
+
+.page-secondary-title {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin: 6px 0 4px 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  text-align: left;
+}
+
+/* Consistent Uniform Body Font for All Narrative Paragraphs */
+.page-lead-paragraph {
+  font-family: var(--font-editorial);
+  font-size: 1.28rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink-primary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.page-body-paragraph {
+  font-family: var(--font-editorial);
+  font-size: var(--body-font-size);
+  line-height: 1.58;
+  color: var(--ink-body);
+  margin-bottom: 8px;
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+/* 3D Physical Letter Depth on Left & Right Pages */
+.book-page.page-left .page-main-title,
+.book-page.page-left .page-secondary-title,
+.book-page.page-left .page-lead-paragraph,
+.book-page.page-left .page-body-paragraph,
+.book-page.page-left .book-bullet-list,
+.book-page.page-left .page-category-tag,
+.book-page.page-left .page-main-subtitle {
+  text-shadow: -1.5px 0 2px rgba(25, 15, 8, 0.14), -3px 0 6px rgba(25, 15, 8, 0.07);
+}
+
+.book-page.page-right .page-main-title,
+.book-page.page-right .page-secondary-title,
+.book-page.page-right .page-lead-paragraph,
+.book-page.page-right .page-body-paragraph,
+.book-page.page-right .book-bullet-list,
+.book-page.page-right .page-category-tag,
+.book-page.page-right .page-main-subtitle {
+  text-shadow: 1.5px 0 2px rgba(25, 15, 8, 0.14), 3px 0 6px rgba(25, 15, 8, 0.07);
+}
+
+/* Bold & Italic Typographic Emphasis */
+.page-body-paragraph strong,
+.book-bullet-list strong,
+.specs-table strong,
+.pillar-desc strong,
+.profile-card-desc strong {
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.page-body-paragraph em,
+.book-bullet-list em,
+.specs-table em,
+.pillar-desc em,
+.profile-card-desc em {
+  font-style: italic;
+  color: var(--ink-primary);
+}
+
+/* Classic Printed Book Drop Capital */
+.drop-cap {
+  float: left;
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  padding-top: 2px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  color: var(--ink-primary);
+  font-weight: 900;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.12);
+}
+
+/* Editorial Pull Quote */
+.page-pull-quote {
+  font-family: var(--font-editorial);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.52;
+  color: var(--ink-primary);
+  border-left: 4px solid var(--ink-accent);
+  padding: 6px 14px;
+  margin: 8px 0;
+  background: rgba(154, 74, 20, 0.05);
+  border-radius: 0 4px 4px 0;
+  text-align: left;
+}
+
+/* ==========================================================================
+   4. CLEAN MUSEUM MATTE PHOTOGRAPH FRAMING (Zero Tape, Full Aspect Ratio)
+   ========================================================================== */
+.book-photo-frame {
+  position: relative;
+  width: 100%;
+  background: var(--book-paper-dark);
+  border: 1.5px solid var(--book-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 6px 0;
+  box-sizing: border-box;
+}
+
+/* Full Page Photo Framing (Spread 01 Portrait) */
+.book-photo-frame.full-page-photo {
+  max-height: 520px;
+  padding: 8px;
+  background: var(--book-paper-dark);
+}
+
+.book-photo-frame.full-page-photo img {
+  max-height: 480px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.book-photo-frame img {
+  width: 100%;
+  max-height: 245px;
+  object-fit: contain;
+  border-radius: 2px;
+  display: block;
+}
+
+.book-photo-caption {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  line-height: 1.35;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   5. SPECIFICATIONS TABLES & DATA CARDS (Scaled Font & Proportions)
+   ========================================================================== */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 7px 0;
+  background: var(--book-paper-light);
+  border: 1.5px solid var(--book-border);
+  border-radius: 3px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid var(--book-border);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table td {
+  padding: 6px 11px;
+  text-align: left;
+}
+
+.specs-table .spec-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  width: 34%;
+  background: rgba(0,0,0,0.02);
+  border-right: 1px solid var(--book-border);
+}
+
+.specs-table .spec-value {
+  font-family: var(--font-technical);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+/* Bullet Lists — Natural Inline Flow with Zero Word Spreading */
+.book-bullet-list {
+  list-style: none;
+  margin: 6px 0;
+  padding: 0;
+  text-align: left;
+}
+
+.book-bullet-list li {
+  position: relative;
+  font-family: var(--font-editorial);
+  font-size: var(--body-font-size);
+  line-height: 1.52;
+  color: var(--ink-body);
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: normal;
+  margin-bottom: 6px;
+  padding-left: 20px;
+}
+
+.book-bullet-list li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ink-primary);
+  font-size: 0.9em;
+}
+
+.skill-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 5px 0 7px 0;
+}
+
+.skill-badge-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  background: var(--book-paper-light);
+  border: 1px solid var(--book-border);
+  border-radius: 3px;
+  color: var(--ink-primary);
+  display: inline-block;
+}
+
+/* Pillar Card */
+.pillar-card {
+  background: var(--book-paper-light);
+  border: 1px solid var(--book-border);
+  border-left: 3.5px solid var(--ink-primary);
+  padding: 7px 11px;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 6px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.pillar-code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-accent);
+}
+
+.pillar-title {
+  font-family: var(--font-technical);
+  font-size: 1.04rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin: 1px 0;
+}
+
+.pillar-desc {
+  font-family: var(--font-editorial);
+  font-size: var(--body-font-size);
+  line-height: 1.46;
+  color: var(--ink-body);
+  text-align: left;
+}
+
+/* 9-Step Flow Grid */
+.flow-step-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+.flow-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 8px;
+  background: var(--book-paper-light);
+  border: 1px solid var(--book-border);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.flow-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: var(--ink-primary);
+  padding: 2px 4px;
+  border-radius: 2px;
+  line-height: 1.2;
+}
+
+.flow-step-info {
+  flex: 1;
+  text-align: left;
+}
+
+.flow-step-name {
+  font-family: var(--font-technical);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.flow-step-desc {
+  font-family: var(--font-editorial);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+  line-height: 1.32;
+}
+
+/* Profile Card */
+.profile-card {
+  background: var(--book-paper-light);
+  border: 1px solid var(--book-border);
+  border-radius: 3px;
+  padding: 7px 11px;
+  margin-bottom: 6px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.profile-card-title {
+  font-family: var(--font-technical);
+  font-size: 1.04rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.profile-card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--ink-blueprint);
+  margin: 1px 0 2px 0;
+}
+
+.profile-card-desc {
+  font-family: var(--font-editorial);
+  font-size: var(--body-font-size);
+  color: var(--ink-body);
+  line-height: 1.45;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+/* Action Buttons & Links */
+.book-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1.5px solid var(--book-border);
+}
+
+.btn-book-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 14px;
+  background: var(--book-paper-light);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 3px;
+  font-family: var(--font-technical);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.4, 1);
+  box-sizing: border-box;
+}
+
+.btn-book-action:hover {
+  background: var(--ink-primary);
+  color: #FFFFFF;
+}
+
+.btn-book-action.btn-primary {
+  background: var(--ink-primary);
+  color: #FFFFFF;
+}
+
+.btn-book-action.btn-primary:hover {
+  background: #2C2620;
+}
+
+/* ==========================================================================
+   6. 3D PHYSICAL CURVATURE ON BOXES, BUTTONS, CARDS & CHIPS
+   ========================================================================== */
+
+/* Left Page Elements Curving into Center Crease (Right Side of Page) */
+.book-page.page-left .pillar-card,
+.book-page.page-left .specs-table,
+.book-page.page-left .profile-card,
+.book-page.page-left .flow-step-card,
+.book-page.page-left .book-photo-frame,
+.book-page.page-left .page-pull-quote,
+.book-page.page-left .book-contact-form input,
+.book-page.page-left .book-contact-form textarea {
+  transform: perspective(850px) rotateY(-2.8deg);
+  transform-origin: right center;
+  box-shadow: 
+    inset -14px 0 20px -5px rgba(35, 20, 10, 0.18),
+    0 3px 10px rgba(0, 0, 0, 0.06);
+  border-right-color: rgba(45, 28, 14, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-page.page-left .skill-badge-chip {
+  transform: perspective(500px) rotateY(-2.5deg);
+  transform-origin: right center;
+  box-shadow: inset -5px 0 8px -2px rgba(35, 20, 10, 0.16), 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.book-page.page-left .btn-book-action {
+  transform: perspective(600px) rotateY(-3.8deg);
+  transform-origin: right center;
+  box-shadow: 
+    inset -8px 0 14px -3px rgba(30, 20, 10, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.book-page.page-left .btn-book-action:hover {
+  transform: perspective(600px) rotateY(-1.5deg) translateY(-2px);
+  box-shadow: 
+    inset -6px 0 10px -2px rgba(30, 20, 10, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* Right Page Elements Curving into Center Crease (Left Side of Page) */
+.book-page.page-right .pillar-card,
+.book-page.page-right .specs-table,
+.book-page.page-right .profile-card,
+.book-page.page-right .flow-step-card,
+.book-page.page-right .book-photo-frame,
+.book-page.page-right .page-pull-quote,
+.book-page.page-right .book-contact-form input,
+.book-page.page-right .book-contact-form textarea {
+  transform: perspective(850px) rotateY(2.8deg);
+  transform-origin: left center;
+  box-shadow: 
+    inset 14px 0 20px -5px rgba(35, 20, 10, 0.18),
+    0 3px 10px rgba(0, 0, 0, 0.06);
+  border-left-color: rgba(45, 28, 14, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-page.page-right .skill-badge-chip {
+  transform: perspective(500px) rotateY(2.5deg);
+  transform-origin: left center;
+  box-shadow: inset 5px 0 8px -2px rgba(35, 20, 10, 0.16), 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.book-page.page-right .btn-book-action {
+  transform: perspective(600px) rotateY(3.8deg);
+  transform-origin: left center;
+  box-shadow: 
+    inset 8px 0 14px -3px rgba(30, 20, 10, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.book-page.page-right .btn-book-action:hover {
+  transform: perspective(600px) rotateY(1.5deg) translateY(-2px);
+  box-shadow: 
+    inset 6px 0 10px -2px rgba(30, 20, 10, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* ==========================================================================
+   7. AUTHENTIC PRINTED RUNNING FOOTER (Strictly Anchored at Bottom Down of Every Page)
+   ========================================================================== */
+.book-page-footer {
+  position: absolute;
+  bottom: 12px;
+  height: 28px;
+  border-top: 1.5px solid rgba(40, 25, 12, 0.22);
+  padding-top: 6px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-sizing: border-box;
+  z-index: 45;
+  pointer-events: none;
+}
+
+.book-page-footer .footer-page-num {
+  font-weight: 800;
+  color: var(--ink-primary);
+  font-size: 0.94rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.book-page.page-left .book-page-footer {
+  left: 24px;
+  right: 38px;
+  transform: perspective(800px) rotateY(-1.8deg);
+  transform-origin: right center;
+}
+
+.book-page.page-right .book-page-footer {
+  left: 38px;
+  right: 24px;
+  transform: perspective(800px) rotateY(1.8deg);
+  transform-origin: left center;
+}
+
+/* ==========================================================================
+   8. CASE STUDY MODAL SHEETS
+   ========================================================================== */
+.case-study-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(14, 12, 10, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.case-study-modal-backdrop.open {
+  display: flex;
+}
+
+.case-study-modal-card {
+  width: 95%;
+  max-width: 940px;
+  max-height: 88vh;
+  background: var(--book-paper);
+  border: 2px solid var(--ink-primary);
+  border-radius: 4px;
+  box-shadow: var(--shadow-book-3d);
+  overflow-y: auto;
+  padding: 30px 40px;
+  position: relative;
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--book-paper-light);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 3px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-close-modal:hover {
+  background: var(--ink-primary);
+  color: #FFFFFF;
+}
+
+/* Contact Form */
+.book-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.book-contact-form input,
+.book-contact-form textarea {
+  padding: 8px 12px;
+  border: 1.5px solid var(--book-border);
+  border-radius: 3px;
+  font-family: var(--font-technical);
+  font-size: 0.88rem;
+  background: var(--book-paper-light);
+  color: var(--ink-primary);
+}
+
+.book-contact-form input:focus,
+.book-contact-form textarea:focus {
+  outline: none;
+  border-color: var(--ink-primary);
+  box-shadow: 0 0 0 2px rgba(18, 16, 14, 0.15);
+}
+
+.book-contact-form textarea {
+  min-height: 65px;
+  resize: none;
+}
+
+/* ==========================================================================
+   9. DYNAMIC CONTENT-ARRIVAL ANIMATION SYSTEM ("Self-Assembling Diary")
+   Physical arrival of text, photographs, cards, and notes onto the page.
+   ========================================================================== */
+
+/* Base Assembly Element */
+.anim-assemble {
+  opacity: 0;
+  transition: 
+    transform 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Directional Off-Page Starting Vectors */
+.book-page:not(.page-assembling):not(.page-settled) .anim-from-top {
+  transform: translate3d(0, -32px, 30px) rotate(-1.5deg) scale(0.97);
+}
+
+.book-page:not(.page-assembling):not(.page-settled) .anim-from-left {
+  transform: translate3d(-48px, 6px, 25px) rotate(-2.8deg) scale(0.96);
+}
+
+.book-page:not(.page-assembling):not(.page-settled) .anim-from-right {
+  transform: translate3d(48px, 6px, 25px) rotate(2.8deg) scale(0.96);
+}
+
+.book-page:not(.page-assembling):not(.page-settled) .anim-from-bottom {
+  transform: translate3d(0, 36px, 20px) rotate(1.2deg) scale(0.97);
+}
+
+.book-page:not(.page-assembling):not(.page-settled) .anim-photo-float {
+  transform: translate3d(-28px, -24px, 70px) rotate(-3.5deg) scale(1.05);
+  filter: drop-shadow(0 20px 28px rgba(20, 14, 8, 0.35));
+}
+
+.book-page:not(.page-assembling):not(.page-settled) .anim-scale-in {
+  transform: translate3d(0, 14px, 15px) scale(0.92);
+}
+
+/* Staggered Delay Sequencing */
+.anim-assemble.delay-1 { transition-delay: 140ms; }
+.anim-assemble.delay-2 { transition-delay: 220ms; }
+.anim-assemble.delay-3 { transition-delay: 310ms; }
+.anim-assemble.delay-4 { transition-delay: 410ms; }
+.anim-assemble.delay-5 { transition-delay: 510ms; }
+.anim-assemble.delay-6 { transition-delay: 620ms; }
+.anim-assemble.delay-7 { transition-delay: 730ms; }
+.anim-assemble.delay-8 { transition-delay: 840ms; }
+
+/* Active Assembly & Settled State Target Coordinates */
+.book-page.page-assembling .anim-assemble,
+.book-page.page-settled .anim-assemble {
+  opacity: 1;
+  filter: none;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+}
+
+/* Preserve 3D Spine Curvature on Assembled/Settled Left Page Elements */
+.book-page.page-left.page-assembling .pillar-card,
+.book-page.page-left.page-assembling .specs-table,
+.book-page.page-left.page-assembling .profile-card,
+.book-page.page-left.page-assembling .flow-step-card,
+.book-page.page-left.page-assembling .book-photo-frame,
+.book-page.page-left.page-assembling .page-pull-quote,
+.book-page.page-left.page-assembling .book-contact-form input,
+.book-page.page-left.page-assembling .book-contact-form textarea,
+.book-page.page-left.page-settled .pillar-card,
+.book-page.page-left.page-settled .specs-table,
+.book-page.page-left.page-settled .profile-card,
+.book-page.page-left.page-settled .flow-step-card,
+.book-page.page-left.page-settled .book-photo-frame,
+.book-page.page-left.page-settled .page-pull-quote,
+.book-page.page-left.page-settled .book-contact-form input,
+.book-page.page-left.page-settled .book-contact-form textarea {
+  transform: perspective(850px) rotateY(-2.8deg);
+}
+
+.book-page.page-left.page-assembling .skill-badge-chip,
+.book-page.page-left.page-settled .skill-badge-chip {
+  transform: perspective(500px) rotateY(-2.5deg);
+}
+
+.book-page.page-left.page-assembling .btn-book-action,
+.book-page.page-left.page-settled .btn-book-action {
+  transform: perspective(600px) rotateY(-3.8deg);
+}
+
+.book-page.page-left.page-assembling .book-page-footer,
+.book-page.page-left.page-settled .book-page-footer {
+  transform: perspective(800px) rotateY(-1.8deg);
+}
+
+/* Preserve 3D Spine Curvature on Assembled/Settled Right Page Elements */
+.book-page.page-right.page-assembling .pillar-card,
+.book-page.page-right.page-assembling .specs-table,
+.book-page.page-right.page-assembling .profile-card,
+.book-page.page-right.page-assembling .flow-step-card,
+.book-page.page-right.page-assembling .book-photo-frame,
+.book-page.page-right.page-assembling .page-pull-quote,
+.book-page.page-right.page-assembling .book-contact-form input,
+.book-page.page-right.page-assembling .book-contact-form textarea,
+.book-page.page-right.page-settled .pillar-card,
+.book-page.page-right.page-settled .specs-table,
+.book-page.page-right.page-settled .profile-card,
+.book-page.page-right.page-settled .flow-step-card,
+.book-page.page-right.page-settled .book-photo-frame,
+.book-page.page-right.page-settled .page-pull-quote,
+.book-page.page-right.page-settled .book-contact-form input,
+.book-page.page-right.page-settled .book-contact-form textarea {
+  transform: perspective(850px) rotateY(2.8deg);
+}
+
+.book-page.page-right.page-assembling .skill-badge-chip,
+.book-page.page-right.page-settled .skill-badge-chip {
+  transform: perspective(500px) rotateY(2.5deg);
+}
+
+.book-page.page-right.page-assembling .btn-book-action,
+.book-page.page-right.page-settled .btn-book-action {
+  transform: perspective(600px) rotateY(3.8deg);
+}
+
+.book-page.page-right.page-assembling .book-page-footer,
+.book-page.page-right.page-settled .book-page-footer {
+  transform: perspective(800px) rotateY(1.8deg);
+}
+
+/* ==========================================================================
+   WORD-LEVEL PHYSICAL FLIGHT & ATTACHMENT ANIMATION
+   Every individual word travels with subtle 3D angle and settles onto paper.
+   ========================================================================== */
+.word-fly {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(var(--w-dx, -32px), var(--w-dy, -6px), 24px) rotate(var(--w-rot, -2.5deg)) scale(0.96);
+  transition: 
+    transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--w-delay, 180ms);
+  will-change: transform, opacity;
+  white-space: pre-wrap;
+}
+
+/* When page is assembling or settled, words land and lock into place */
+.book-page.page-assembling .word-fly,
+.book-page.page-settled .word-fly {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+}
+
+.book-page.page-settled .word-fly {
+  transition: none;
+  transform: none;
+}
+
+/* Accessibility: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .anim-assemble,
+  .word-fly {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 0.15s ease !important;
+  }
+}
+

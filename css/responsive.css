@@ -1,0 +1,91 @@
+/* ==========================================================================
+   GOKULARASAN — RESPONSIVE ADAPTATIONS (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --book-width: 96vw;
+    --book-height: 88vh;
+  }
+
+  .book-page {
+    padding: 24px 28px 16px 28px;
+  }
+
+  .desk-book-hotspot {
+    width: 55vw;
+    height: 60vh;
+  }
+
+  .desk-clock-overlay {
+    top: 22%;
+    right: 6%;
+    width: 90px;
+    height: 90px;
+  }
+
+  .desk-clock-face {
+    width: 80px;
+    height: 80px;
+  }
+
+  .taped-photo-frame img {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --book-width: 98vw;
+    --book-height: 92vh;
+  }
+
+  .book-wrapper-3d::before,
+  .book-wrapper-3d::after {
+    display: none;
+  }
+
+  .book-spine-crease {
+    display: none;
+  }
+
+  .book-page {
+    padding: 20px 22px 14px 22px;
+  }
+
+  .page-main-title {
+    font-size: 1.55rem;
+  }
+
+  .drop-cap {
+    font-size: 2.8rem;
+  }
+
+  .desk-clock-overlay {
+    top: 18%;
+    right: 4%;
+    width: 75px;
+    height: 75px;
+  }
+
+  .desk-clock-face {
+    width: 65px;
+    height: 65px;
+  }
+
+  .taped-photo-frame img {
+    max-height: 180px;
+  }
+
+  .taped-photo-frame.full-page-photo img {
+    max-height: 280px;
+  }
+
+  .flow-step-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-modal-card {
+    padding: 24px 20px;
+  }
+}

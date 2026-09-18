@@ -1,0 +1,68 @@
+/* ==========================================================================
+   GOKULARASAN — AUTHENTIC PRINTED BOOK DESIGN SYSTEM
+   Mild Shaded White Paper, Deep Ink, Full Screen Edge-to-Edge Spread
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600;1,6..72,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  /* Mild Shaded White Book Paper (Soft Off-White / Natural Ivory Finish) */
+  --book-paper: #FAF8F5;
+  --book-paper-light: #FFFFFF;
+  --book-paper-dark: #F3ECE2;
+  --book-paper-spine: #EAE2D5;
+  --book-paper-edge: #DFD5C4;
+  --book-border: #E6DDD0;
+
+  /* Deep Printed Black Ink */
+  --ink-primary: #12100E;
+  --ink-body: #201C18;
+  --ink-secondary: #3D352E;
+  --ink-muted: #61564B;
+  --ink-faint: #85786B;
+  --ink-blueprint: #153860;
+  --ink-accent: #9A4A14;
+
+  /* Hardcover Binding Trim */
+  --cover-leather: #2B1D14;
+  --cover-gold: #C99A3E;
+
+  /* Typography Stack & Master Sizes */
+  --font-editorial: 'Newsreader', 'EB Garamond', Georgia, serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-technical: 'Space Grotesk', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --body-font-size: 1.25rem;
+
+  /* Maximized True Edge-to-Edge Fullscreen Book Geometry */
+  --book-width: 100vw;
+  --book-height: 100vh;
+  --spine-width: 28px;
+
+  /* 3D Shadows & Gutter Crease */
+  --shadow-book-3d: 
+    0 35px 85px -15px rgba(0, 0, 0, 0.45),
+    0 18px 35px -5px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.15);
+  --shadow-page-left: inset -32px 0 40px -18px rgba(35, 24, 12, 0.18);
+  --shadow-page-right: inset 32px 0 40px -18px rgba(35, 24, 12, 0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0E1014;
+  color: var(--ink-primary);
+  font-family: var(--font-editorial);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+  user-select: none;
+}

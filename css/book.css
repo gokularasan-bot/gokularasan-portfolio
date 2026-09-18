@@ -1,0 +1,629 @@
+/* ==========================================================================
+   GOKULARASAN — LIVING DESK ENVIRONMENT, 3D PHYSICAL BOOK & CINEMATIC ZOOM
+   Mild Shaded White Book, Edge-to-Edge Spread, Transparent Scrubber
+   ========================================================================== */
+
+/* Main Fullscreen Stage with 3D Camera Perspective */
+.viewport-stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0C0E12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  perspective-origin: 49% 51%;
+}
+
+/* ==========================================================================
+   1. LIVING DESK ENVIRONMENT (Photo Scene with Ambient Micro-Animations)
+   ========================================================================== */
+.desk-cover-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-image: url('../assets/images/desk-cover.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 49% 51%;
+  transition: 
+    transform 2.1s cubic-bezier(0.22, 1, 0.36, 1), 
+    opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.8s, 
+    filter 1.3s ease 0.8s;
+  cursor: pointer;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+
+/* Simultaneous Cinematic Camera Zoom on Book Interaction */
+.desk-cover-scene.entering-book {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(2.75) translate3d(0, 0, 480px);
+  filter: blur(5px);
+}
+
+/* Subtle atmospheric lighting vignette on desk */
+.desk-cover-scene::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+  z-index: 102;
+}
+
+/* Responsive 16:9 Aspect-Ratio Layer matching desk-cover.jpg cover geometry */
+.desk-scene-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 56.25vw;
+  max-width: 177.78vh;
+  max-height: 100vh;
+  pointer-events: auto;
+  z-index: 103;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .desk-scene-layer {
+    width: 177.78vh;
+    height: 100vh;
+  }
+}
+@media (min-aspect-ratio: 16/9) {
+  .desk-scene-layer {
+    width: 100vw;
+    height: 56.25vw;
+  }
+}
+
+/* ==========================================================================
+   A. LIVING PLANT BRANCHES — TOP CENTER (Natural Mild Breeze Swaying)
+   ========================================================================== */
+.desk-plant-top {
+  position: absolute;
+  top: 0;
+  left: 50.78%;
+  width: 21.48%;
+  height: 22.57%;
+  pointer-events: none;
+  z-index: 105;
+  transform-origin: 45% 0%;
+  animation: plantBranchSwayTop 6.8s ease-in-out infinite;
+}
+
+.plant-branch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes plantBranchSwayTop {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  24% {
+    transform: rotate(1.8deg) translate3d(2px, 1px, 0) skewX(0.8deg);
+  }
+  48% {
+    transform: rotate(0.4deg) translate3d(0.5px, 0.2px, 0);
+  }
+  72% {
+    transform: rotate(-1.5deg) translate3d(-2px, 0.8px, 0) skewX(-0.6deg);
+  }
+  88% {
+    transform: rotate(-0.3deg) translate3d(-0.5px, 0.3px, 0);
+  }
+}
+
+/* ==========================================================================
+   B. LIVING PLANT FOLIAGE — BOTTOM LEFT (Lush Leaf Bending & Light Flutter)
+   ========================================================================== */
+.desk-plant-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25.39%;
+  height: 37.5%;
+  pointer-events: none;
+  z-index: 105;
+  transform-origin: 15% 92%;
+  animation: plantFoliageBreezeBottom 8.4s ease-in-out infinite;
+}
+
+.plant-foliage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes plantFoliageBreezeBottom {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0) scale(1);
+  }
+  20% {
+    transform: rotate(1.6deg) translate3d(3px, -1.5px, 0) scale(1.008);
+  }
+  38% {
+    transform: rotate(0.6deg) translate3d(1px, -0.5px, 0);
+  }
+  65% {
+    transform: rotate(-1.2deg) translate3d(-2px, 1px, 0) scale(0.995);
+  }
+  85% {
+    transform: rotate(-0.4deg) translate3d(-0.8px, 0.3px, 0);
+  }
+}
+
+/* ==========================================================================
+   C. HOT COFFEE CUP — MULTI-STRAND THERMAL STEAM & HEAT SHIMMER
+   ========================================================================== */
+.coffee-cup-hotspot {
+  position: absolute;
+  top: 49.83%;
+  left: 11.43%;
+  transform: translate(-50%, -50%);
+  width: 7.4%;
+  height: 13.2%;
+  pointer-events: none;
+  z-index: 108;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Soft warm thermal heat haze directly over the coffee crema */
+.coffee-heat-shimmer {
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 180, 0.22) 0%, rgba(220, 160, 60, 0.08) 50%, transparent 75%);
+  filter: blur(4px);
+  animation: heatShimmerPulse 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes heatShimmerPulse {
+  0% { transform: scale(0.92); opacity: 0.25; }
+  100% { transform: scale(1.1); opacity: 0.7; }
+}
+
+/* Rising organic multi-strand vapor plume */
+.coffee-vapor-plume {
+  position: absolute;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 160px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.vapor-wisp {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  filter: blur(5px);
+  opacity: 0;
+  will-change: transform, opacity;
+  background: radial-gradient(ellipse at 45% 45%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.18) 45%, rgba(240, 230, 215, 0.04) 75%, transparent 100%);
+}
+
+.vapor-wisp.wisp-1 {
+  left: 26px;
+  width: 22px;
+  height: 70px;
+  animation: steamRiseOrganic 4.6s ease-out infinite;
+}
+
+.vapor-wisp.wisp-2 {
+  left: 36px;
+  width: 26px;
+  height: 90px;
+  animation: steamRiseOrganic 6.2s ease-out 1.2s infinite;
+}
+
+.vapor-wisp.wisp-3 {
+  left: 18px;
+  width: 20px;
+  height: 65px;
+  animation: steamRiseOrganic 5.4s ease-out 2.4s infinite;
+}
+
+.vapor-wisp.wisp-4 {
+  left: 30px;
+  width: 32px;
+  height: 110px;
+  animation: steamRiseOrganic 7.5s ease-out 0.6s infinite;
+}
+
+.vapor-wisp.wisp-5 {
+  left: 22px;
+  width: 18px;
+  height: 60px;
+  animation: steamRiseOrganic 4.2s ease-out 3.1s infinite;
+}
+
+.vapor-wisp.wisp-6 {
+  left: 40px;
+  width: 24px;
+  height: 80px;
+  animation: steamRiseOrganic 5.9s ease-out 4.3s infinite;
+}
+
+@keyframes steamRiseOrganic {
+  0% {
+    transform: translateY(10px) scaleX(0.55) scaleY(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.45;
+  }
+  42% {
+    transform: translateY(-38px) scaleX(1.3) scaleY(1.15) rotate(5deg) translateX(4px);
+    opacity: 0.35;
+  }
+  75% {
+    transform: translateY(-85px) scaleX(1.9) scaleY(1.5) rotate(-6deg) translateX(9px);
+    opacity: 0.16;
+  }
+  100% {
+    transform: translateY(-135px) scaleX(2.6) scaleY(1.8) rotate(4deg) translateX(15px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   D. REAL-TIME WORKING HANDS OVER THE ACTUAL CLOCK IN THE PHOTOGRAPH
+   The real photo is 100% the clock face; only the live hands rotate.
+   ========================================================================== */
+.desk-clock-hands-overlay {
+  position: absolute;
+  top: 32.99%;
+  left: 93.26%;
+  transform: translate(-50%, -50%);
+  width: 12.7%;
+  aspect-ratio: 1 / 1;
+  z-index: 108;
+  pointer-events: none;
+}
+
+.clock-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 2px;
+  will-change: transform;
+}
+
+/* Hour Hand (Vintage black tapered hand with natural cast shadow) */
+.clock-hand.hand-hour {
+  width: 3.6px;
+  height: 27%;
+  margin-left: -1.8px;
+  margin-top: -27%;
+  background: #14110E;
+  box-shadow: 1.5px 2.5px 3.5px rgba(25, 15, 8, 0.45);
+  border-radius: 2px 2px 1px 1px;
+}
+
+/* Minute Hand (Tapered long needle hand with natural cast shadow) */
+.clock-hand.hand-minute {
+  width: 2.4px;
+  height: 40%;
+  margin-left: -1.2px;
+  margin-top: -40%;
+  background: #1A1713;
+  box-shadow: 1.5px 3.5px 4.5px rgba(25, 15, 8, 0.45);
+  border-radius: 2px 2px 1px 1px;
+}
+
+/* Second Hand (Slim bronze-red ticker with counterpoise) */
+.clock-hand.hand-second {
+  width: 1.2px;
+  height: 44%;
+  margin-left: -0.6px;
+  margin-top: -44%;
+  background: #C43828;
+  box-shadow: 1px 2px 3px rgba(180, 40, 20, 0.4);
+  border-radius: 1px;
+}
+
+.clock-hand.hand-second::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: -2.4px;
+  width: 6px;
+  height: 6px;
+  background: #C43828;
+  border-radius: 50%;
+}
+
+/* Center Pin Rivet */
+.clock-center-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #D4AF37 0%, #AA8220 50%, #1A140C 100%);
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.55);
+  z-index: 5;
+}
+
+/* ==========================================================================
+   E. INTERACTIVE PHYSICAL FIELD BOOK HOTSPOT ON DESK (Opening & Zoom)
+   ========================================================================== */
+.desk-book-hotspot {
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  width: 33.2%;
+  height: 72%;
+  cursor: pointer;
+  z-index: 110;
+  border-radius: 14px;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+/* Tactile Physical Touch Response (0-150ms) */
+.desk-book-hotspot:active,
+.desk-book-hotspot.touch-depress {
+  transform: translate(-50%, -49.2%) scale(0.975);
+}
+
+/* Elegant Warm Hover Glow Sheen over the Natural Leather Book */
+.desk-book-hotspot::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 50%, rgba(210, 160, 75, 0.22) 0%, rgba(210, 160, 75, 0.05) 50%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.desk-book-hotspot:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   3. OPEN 3D PRINTED BOOK STAGE (Mild Shaded White Edge-to-Edge Spread)
+   ========================================================================== */
+.open-book-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transform: scale(0.9) translateZ(-60px);
+  filter: blur(4px);
+  transition: 
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s, 
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+  pointer-events: none;
+}
+
+.open-book-stage.active {
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+  filter: blur(0px);
+  pointer-events: auto;
+}
+
+/* 3D Realistic Book Shell — True Fullscreen 100vw Edge-to-Edge */
+.book-wrapper-3d {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: var(--book-paper);
+  display: flex;
+  overflow: hidden;
+  perspective: 2000px;
+}
+
+/* Center Binding Crease with Rich 3D Physical Spine Shading */
+.book-spine-crease {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 32px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(15, 10, 5, 0.42) 0%,
+    rgba(25, 18, 10, 0.18) 25%,
+    rgba(255, 255, 255, 0.6) 48%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.6) 52%,
+    rgba(25, 18, 10, 0.18) 75%,
+    rgba(15, 10, 5, 0.42) 100%
+  );
+  box-shadow: 
+    -6px 0 18px -2px rgba(15, 10, 5, 0.28),
+    6px 0 18px -2px rgba(15, 10, 5, 0.28);
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Center Stitched Thread Line */
+.book-spine-crease::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 8px,
+    rgba(60, 40, 20, 0.5) 8px,
+    rgba(60, 40, 20, 0.5) 16px
+  );
+}
+
+/* StPageFlip Container and Library Overrides */
+#book-flip-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 20;
+}
+
+.stf__parent,
+.stf__wrapper,
+.stf__block {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   4. LITERALLY TRANSPARENT BOTTOM SCRUBBER BAR
+   ========================================================================== */
+.book-bottom-scrubber {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(680px, 90vw);
+  height: 28px;
+  background: rgba(22, 17, 12, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 185, 165, 0.35);
+  border-radius: 20px;
+  padding: 2px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 250;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, opacity 0.3s ease;
+  user-select: none;
+}
+
+.book-bottom-scrubber:hover {
+  background: rgba(22, 17, 12, 0.18);
+  border-color: rgba(200, 185, 165, 0.55);
+}
+
+.scrubber-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrubber-nav-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.scrubber-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(18, 16, 14, 0.14);
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.scrubber-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--ink-primary);
+  border-radius: 3px;
+  width: 5%;
+  pointer-events: none;
+  transition: width 0.12s ease;
+}
+
+.scrubber-thumb {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 13px;
+  height: 13px;
+  background: var(--ink-primary);
+  border: 2px solid var(--book-paper);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  cursor: grab;
+  transition: transform 0.1s ease, left 0.12s ease;
+}
+
+.scrubber-thumb:active {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.scrubber-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-primary);
+  min-width: 105px;
+  text-align: right;
+  white-space: nowrap;
+}
